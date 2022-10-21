@@ -9,3 +9,12 @@ body{
     display: flex;
     font-family: 'Roboto', sans-serif;
 }
+
+.col {
+    flex: 1;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
