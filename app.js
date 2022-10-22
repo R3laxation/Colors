@@ -1,5 +1,24 @@
 const cols = document.querySelectorAll('.col');
 
+document.addEventListener('click', event => {
+    const type = event.target.dataset.type;
+    if (type === 'lock') {
+        const node = event.target.tagName.toLowerCase() === 'i'
+            ? event.target
+            : event.target.children[0];
+
+        node.classList.toggle('fa-lock-open');
+        node.classList.toggle('fa-lock');
+    }
+});
+
+
+document.addEventListener('keydown', event => {
+    if (event.code.toLowerCase() === 'space') {
+        setRandomColors();
+    }
+});
+
 function generateRandomColor() {
     const hexCodes = '0123456789ABCDEF';
     let color = '';
@@ -8,12 +27,6 @@ function generateRandomColor() {
     }
     return '#' + color;
 };
-
-document.addEventListener('keydown', event => {
-    if(event.code.toLowerCase() === 'space'){
-        setRandomColors();
-    }
-});
 
 function setRandomColors() {
     cols.forEach(col => {
@@ -28,7 +41,7 @@ function setRandomColors() {
     })
 };
 
-function setTextColor(text, color){
+function setTextColor(text, color) {
     const luminance = chroma(color).luminance();
     text.style.color = luminance > 0.5 ? 'black' : 'white';
 }
