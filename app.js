@@ -10,7 +10,7 @@ document.addEventListener('click', event => {
         node.classList.toggle('fa-lock-open');
         node.classList.toggle('fa-lock');
     } else if(type === 'copy'){
-        copyToClickBoard(event.target.textContent);
+        copyToClickboard(event.target.textContent);
     }
 });
 
@@ -30,7 +30,7 @@ function generateRandomColor() {
     return '#' + color;
 };
 
-function copyToClickBoard(text){
+function copyToClickboard(text){
         return navigator.clipboard.writeText(text);
 };
 
