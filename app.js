@@ -28,6 +28,10 @@ function generateRandomColor() {
     return '#' + color;
 };
 
+function copyToClickBoard(text){
+        return navigator.clipboard.writeText(text);
+};
+
 function setRandomColors() {
     cols.forEach(col => {
         const isLocked = col.querySelector('i').classList.contains('fa-lock');
