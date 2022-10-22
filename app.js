@@ -9,6 +9,12 @@ function generateRandomColor() {
     return '#' + color;
 };
 
+document.addEventListener('keydown', event => {
+    if(event.code.toLowerCase() === 'space'){
+        setRandomColors();
+    }
+});
+
 function setRandomColors() {
     cols.forEach(col => {
         const text = col.querySelector('h2');
