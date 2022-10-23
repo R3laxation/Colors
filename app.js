@@ -56,6 +56,8 @@ function setRandomColors() {
         setTextColor(text, color);
         setTextColor(button, color);
     })
+
+    updataColorsHash(colors);
 };
 
 function setTextColor(text, color) {
