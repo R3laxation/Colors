@@ -45,7 +45,9 @@ function setRandomColors(isInitial) {
             return
         }
         const color = isInitial ? colors[i]: chroma.random();
-        colors.push(color);
+        if(!isInitial){
+            colors.push(color);
+        }
         text.textContent = color;
         col.style.background = color;
 
