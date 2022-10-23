@@ -64,4 +64,11 @@ function setTextColor(text, color) {
 function updateColorsHash(colors = []){
     document.location.hash = colors.map(color => color.toString().substring(1)).join('-');
 };
+
+function getColorsFromHash(){
+    if(document.location.hash.length > 1){
+       return document.location.hash.substring(1).split('-').map(color => '#' + color)
+    }
+    return [];
+}
 setRandomColors();
