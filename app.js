@@ -34,10 +34,6 @@ function copyToClickboard(text){
         return navigator.clipboard.writeText(text);
 };
 
-function updataColorsHash(colors = []){
-    document.location.hash = colors.toString();
-};
-
 function setRandomColors() {
     const colors = [];
     cols.forEach(col => {
@@ -57,7 +53,7 @@ function setRandomColors() {
         setTextColor(button, color);
     })
 
-    updataColorsHash(colors);
+    updateColorsHash(colors);
 };
 
 function setTextColor(text, color) {
@@ -65,4 +61,7 @@ function setTextColor(text, color) {
     text.style.color = luminance > 0.5 ? 'black' : 'white';
 }
 
+function updateColorsHash(colors = []){
+    document.location.hash = colors.map(color => color.toString().substring(1)).join('-');
+};
 setRandomColors();
