@@ -9,7 +9,7 @@ document.addEventListener('click', event => {
 
         node.classList.toggle('fa-lock-open');
         node.classList.toggle('fa-lock');
-    } else if(type === 'copy'){
+    } else if (type === 'copy') {
         copyToClickboard(event.target.textContent);
     }
 });
@@ -30,8 +30,8 @@ function generateRandomColor() {
     return '#' + color;
 };
 
-function copyToClickboard(text){
-        return navigator.clipboard.writeText(text);
+function copyToClickboard(text) {
+    return navigator.clipboard.writeText(text);
 };
 
 function setRandomColors(isInitial) {
@@ -40,12 +40,16 @@ function setRandomColors(isInitial) {
         const isLocked = col.querySelector('i').classList.contains('fa-lock');
         const text = col.querySelector('h2');
         const button = col.querySelector('button');
-        if(isLocked){
+        if (isLocked) {
             colors.push(text.textContent);
             return
         }
-        const color = isInitial ? colors[i]: chroma.random();
-        if(!isInitial){
+        const color = isInitial
+            ? colors[i]
+                ? colors[i]
+                : chroma.random()
+            : chroma.random();
+        if (!isInitial) {
             colors.push(color);
         }
         text.textContent = color;
@@ -63,14 +67,15 @@ function setTextColor(text, color) {
     text.style.color = luminance > 0.5 ? 'black' : 'white';
 }
 
-function updateColorsHash(colors = []){
+function updateColorsHash(colors = []) {
     document.location.hash = colors.map(color => color.toString().substring(1)).join('-');
 };
 
-function getColorsFromHash(){
-    if(document.location.hash.length > 1){
-       return document.location.hash.substring(1).split('-').map(color => '#' + color)
+function getColorsFromHash() {
+    if (document.location.hash.length > 1) {
+        return document.location.hash.substring(1).split('-').map(color => '#' + color)
     }
     return [];
 }
+
 setRandomColors(true);
