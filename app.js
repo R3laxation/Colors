@@ -36,15 +36,15 @@ function copyToClickboard(text){
 
 function setRandomColors(isInitial) {
     const colors = isInitial ? getColorsFromHash() : [];
-    cols.forEach(col => {
+    cols.forEach((col, i) => {
         const isLocked = col.querySelector('i').classList.contains('fa-lock');
         const text = col.querySelector('h2');
         const button = col.querySelector('button');
-        const color = chroma.random();
         if(isLocked){
             colors.push(text.textContent);
             return
         }
+        const color = isInitial ? colors[i]: chroma.random();
         colors.push(color);
         text.textContent = color;
         col.style.background = color;
