@@ -34,8 +34,8 @@ function copyToClickboard(text){
         return navigator.clipboard.writeText(text);
 };
 
-function setRandomColors() {
-    const colors = [];
+function setRandomColors(isInitial) {
+    const colors = isInitial ? getColorsFromHash() : [];
     cols.forEach(col => {
         const isLocked = col.querySelector('i').classList.contains('fa-lock');
         const text = col.querySelector('h2');
@@ -71,4 +71,4 @@ function getColorsFromHash(){
     }
     return [];
 }
-setRandomColors();
+setRandomColors(true);
