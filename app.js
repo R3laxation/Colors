@@ -34,6 +34,10 @@ function copyToClickboard(text){
         return navigator.clipboard.writeText(text);
 };
 
+function updataColorsHash(colors = []){
+    document.location.hash = colors.toString();
+};
+
 function setRandomColors() {
     cols.forEach(col => {
         const isLocked = col.querySelector('i').classList.contains('fa-lock');
